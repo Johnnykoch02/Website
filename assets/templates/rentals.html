@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Rentals{% endblock %}
+{% block content %}
+ <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='timer.js') }}"
+    ></script>
+<link rel="stylesheet" href="timer.css">
+<body align="center" margin="10px">
+<h1 align="center">Current Rentals</h1>
+<ul class="list-group list-group-flush" id="groups">
+{% for group in user.groups %}
+{% if group.active %}
+<li class="list-group-item">
+     Name: {{ group.full_name }}     Group ID: {{group.group_id }} 
+      Phone Number: {{group.phone_number}}    Date: {{ group.time_started }}
+            <div class="time" id="time-{{ group.group_id }}">00:00</div>
+            <input type="text" id="input-time{{ group.group_id }}" name="input-time{{ group.group_id }}"> 
+            <button type="submit" class="btn btn-primary" onClick="timerHandler({{ group.group_id }})">Enter</button>             
+   {% endif %}
+    <button type="button" class="close" onClick="unqeueGroup({{ group.group_id }})"
+    <span aria-hidden="true">&times;</span>
+</li>
+{% endfor %}
+{% endblock %}
