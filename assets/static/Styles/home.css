@@ -1,0 +1,28 @@
+
+.banner  {
+    width: 100%;
+    position: absolute;
+    height: 500px;
+}
+
+.banner > .banner-img {
+    position: relative;
+    outline: 2px solid black;
+    background-image: url(../Images/portalhomepage.png);
+    background-size: cover;
+    height: 500px;
+    overflow: hidden;
+
+}
+.banner > .banner-img > .banner-text {
+    text-align: center;
+    padding-top: 8%;
+	text-transform: uppercase;
+	color: whitesmoke;
+    	font-size: 80px;
+    -webkit-text-stroke: 2px #082924;  
+        font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body {
+    background-color: #2b3137;
+}

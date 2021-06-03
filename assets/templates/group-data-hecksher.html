@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Rental Data for HSP{% endblock %}
+{% block content %}
+<body align="center" margin="10px">
+<h1 align="center">Rental Data for Hecksher Park</h1>
+<img src="http://beachsidevalet.com/wp-content/uploads/2020/02/Anotherbeach-300x169.jpg" align="center">
+<ul class="list-group list-group-flush" id="groups">
+{% for group in user.groups %}
+<li class="list-group-item">
+     <p><b>Name:</b>  {{ group.full_name }}   <b>Group ID:</b>  {{group.group_id }}  </p> 
+       <p> <b> Phone Number: </b>{{group.phone_number}}    <b>Date: </b>{{ group.time_started }} </p>
+      <p>  <b>License Number: </b>{{group.drivers_license}} <b>Email:  </b>{{ group.email_address }} </p>
+   
+</li>
+{% endfor %}
+{% endblock %}

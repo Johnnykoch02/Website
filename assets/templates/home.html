@@ -1,20 +1,28 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% extends "base.html" %}
+{% block head %} 
+<link rel="stylesheet" href="static/Styles/home.css"/>
+{% endblock %}
+{% block title %}Home{% endblock %}
+{% block banner %}
+
+<div class="banner">
+    <div class="banner-img">
+        <div class="banner-text">
+            <h1 style="font-size: 100px;transform: translateY(-50px);"><b>Beachside Valet</b></h1>
+             <h2 style="font-size: 80px;transform: translateY(-40px);"><b>Employee Portal</b></h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
 
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-{% for note in user.notes %}
-<li class="list-group-item">{{ note.text }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})"
-    <span aria-hidden="true">&times;</span>
-</li>
-{% endfor %}
-<form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
-    </div>
-</form>
+
+
+
+
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="js/kinetic.js"></script>
 <script type="text/javascript" src="../jquery.final-countdown.js"></script>

@@ -1,6 +1,6 @@
 let timers = []
 function timerHandler(id) {
-    timers.append(new Timer(id));
+    timers.push(new Timer(id));
 }
 function deleteNote(noteId) {
 

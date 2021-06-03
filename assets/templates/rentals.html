@@ -7,18 +7,20 @@
 <link rel="stylesheet" href="timer.css">
 <body align="center" margin="10px">
 <h1 align="center">Current Rentals</h1>
+<img src="http://beachsidevalet.com/wp-content/uploads/2020/02/Anotherbeach-300x169.jpg" align="center">
 <ul class="list-group list-group-flush" id="groups">
 {% for group in user.groups %}
 {% if group.active %}
 <li class="list-group-item">
-     Name: {{ group.full_name }}     Group ID: {{group.group_id }} 
-      Phone Number: {{group.phone_number}}    Date: {{ group.time_started }}
-            <div class="time" id="time-{{ group.group_id }}">00:00</div>
+     <p><b>Name: </b>{{ group.full_name }}     <b>Group ID: </b>{{group.group_id }}
+     <b>Phone Number: </b>{{group.phone_number}}    <b>Date: </b>{{ group.time_started }}</p>
+      <img src="https://th.bing.com/th/id/R909496ff8e0b894f5aef5fe71fd5635c?rik=uISjfccQwWF%2fYw&pid=ImgRaw" align="left" style="width:100px;height:100px">
+            <div class="time" id="time-{{ group.group_id }}"><b>00:00</b></div>
             <input type="text" id="input-time{{ group.group_id }}" name="input-time{{ group.group_id }}"> 
             <button type="submit" class="btn btn-primary" onClick="timerHandler({{ group.group_id }})">Enter</button>             
-   {% endif %}
-    <button type="button" class="close" onClick="unqeueGroup({{ group.group_id }})"
-    <span aria-hidden="true">&times;</span>
+            <button type="button" class="close" onClick="unqeueGroup({{ group.group_id }})"
+            <span aria-hidden="true">&times;</span>
+            {% endif %}
 </li>
 {% endfor %}
 {% endblock %}

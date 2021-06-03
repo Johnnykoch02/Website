@@ -3,6 +3,8 @@ from flask_login import login_user, login_required, logout_user, current_user
 from .models import Group, Note
 from . import db
 import json
+import phonenumbers as pn
+
 
 views = Blueprint('views', __name__)
 
@@ -38,6 +40,7 @@ def rentals_form():
         signature = request.form.get('signature')
         licenseNumber = request.form.get('license-number')
         phoneNumber = request.form.get('phone-number')
+        phoneNumber = pn.format_number(pn.parse(phoneNumber, 'US'), pn.PhoneNumberFormat.NATIONAL)
         emailAddress = request.form.get('email-address')
         new_group = Group(user_id=current_user.id, full_name=fullName, phone_number=phoneNumber, drivers_license=licenseNumber, email_address=emailAddress, consent=signature, active=True)
         db.session.add(new_group)
@@ -51,16 +54,20 @@ def rentals():
 @views.route('/unactivate-group', methods=['POST'])
 def unactivate_group():
     group = json.loads(request.data)
-    group_id = group['group_id']
+    group_id = group['groupId']
     group = Group.query.get(group_id)
     print("in unactivate")
     if group:
         print("unactivating")
         if group.user_id == current_user.id:
-            group.active.append(False)
+            group.active = False
             db.session.commit()
     
     return jsonify({})
+
+@views.route('/group-data-hecksher', methods=['GET'])
+def group_data():
+    return render_template('group-data-hecksher.html', user=current_user)
 
 
 # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
